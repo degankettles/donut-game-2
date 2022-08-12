@@ -1,24 +1,31 @@
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Food, function (sprite, otherSprite) {
+    info.changeScoreBy(1)
+    music.knock.play()
+    taco.setPosition(randint(10, 150), randint(10, 110))
+    info.startCountdown(5)
+})
+let taco: Sprite = null
 scene.setBackgroundColor(10)
 let mySprite = sprites.create(img`
-    . . 4 4 4 . . . . 4 4 4 . . . .
-    . 4 5 5 5 e . . e 5 5 5 4 . . .
-    4 5 5 5 5 5 e e 5 5 5 5 5 4 . .
-    4 5 5 4 4 5 5 5 5 4 4 5 5 4 . .
-    e 5 4 4 5 5 5 5 5 5 4 4 5 e . .
-    . e e 5 5 5 5 5 5 5 5 e e . . .
-    . . e 5 f 5 5 5 5 f 5 e . . . .
-    . . f 5 5 5 4 4 5 5 5 f . . f f
-    . . f 4 5 5 f f 5 5 6 f . f 5 f
-    . . . f 6 6 6 6 6 6 4 4 f 5 5 f
-    . . . f 4 5 5 5 5 5 5 4 4 5 f .
-    . . . f 5 5 5 5 5 4 5 5 f f . .
-    . . . f 5 f f f 5 f f 5 f . . .
-    . . . f f . . f f . . f f . . .
-`, SpriteKind.Player)
+    . . 4 4 4 . . . . 4 4 4 . . . . 
+    . 4 5 5 5 e . . e 5 5 5 4 . . . 
+    4 5 5 5 5 5 e e 5 5 5 5 5 4 . . 
+    4 5 5 4 4 5 5 5 5 4 4 5 5 4 . . 
+    e 5 4 4 5 5 5 5 5 5 4 4 5 e . . 
+    . e e 5 5 5 5 5 5 5 5 e e . . . 
+    . . e 5 f 5 5 5 5 f 5 e . . . . 
+    . . f 5 5 5 4 4 5 5 5 f . . f f 
+    . . f 4 5 5 f f 5 5 6 f . f 5 f 
+    . . . f 6 6 6 6 6 6 4 4 f 5 5 f 
+    . . . f 4 5 5 5 5 5 5 4 4 5 f . 
+    . . . f 5 5 5 5 5 4 5 5 f f . . 
+    . . . f 5 f f f 5 f f 5 f . . . 
+    . . . f f . . f f . . f f . . . 
+    `, SpriteKind.Player)
 mySprite.setPosition(22, 30)
 mySprite.setScale(1.75, ScaleAnchor.Middle)
 controller.moveSprite(mySprite)
-let taco = sprites.create(img`
+taco = sprites.create(img`
     ..............eeeeeee...........
     ............ee455662e2e.........
     ..........ee45556723e2688.......
@@ -53,3 +60,4 @@ let taco = sprites.create(img`
     ................................
     `, SpriteKind.Food)
 taco.setScale(0.7, ScaleAnchor.Middle)
+music.playMelody("C5 - F - C5 - F - ", 120)
